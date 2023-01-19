@@ -9,7 +9,9 @@ const Auth=require("./middleware/Auth.mddleware")
 const app=express()
 app.use(express.json())
 app.use(cors())
-
+app.get("/",(req,res)=>{
+    res.send("Welcome to Bugtracker")
+})
 app.use("/user",UserRouter)
 app.use("/bugs",Auth,BugRouter)
 
