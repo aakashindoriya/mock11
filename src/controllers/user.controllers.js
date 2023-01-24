@@ -14,7 +14,13 @@ const Signup=(async (req,res)=>{
         }
         else{
            try {
-            let user =await Muser.create({email,password,name})
+            let role="student"
+            let arr=email.split("@")
+            if(arr[1]==="masaischool.com"){
+                role="admin"
+            }
+
+            let user =await Muser.create({email,password,name,role})
             res.status(201).send({message:"signin successfull",user})
            }catch(e){
             res.status(404).send(e.message)
